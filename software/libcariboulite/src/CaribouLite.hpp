@@ -164,7 +164,7 @@ public:
     unsigned char GetTrueRandVal(void);
     
     // Frequency Control
-    void SetFrequency(float freq_hz);
+    void SetFrequency(float freq_hz, bool break_before = false);
     float GetFrequency(void);
     std::vector<CaribouLiteFreqRange> GetFrequencyRange(void);
     float GetFrequencyResolution(void);

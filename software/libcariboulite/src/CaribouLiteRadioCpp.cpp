@@ -470,7 +470,7 @@ unsigned char CaribouLiteRadio::GetTrueRandVal()
 // Frequency Control
 
 //==================================================================
-void CaribouLiteRadio::SetFrequency(float freq_hz)
+void CaribouLiteRadio::SetFrequency(float freq_hz, bool break_before)
 {
     if (!cariboulite_frequency_available((cariboulite_channel_en)_type, freq_hz))
     {
@@ -480,7 +480,7 @@ void CaribouLiteRadio::SetFrequency(float freq_hz)
     }
     double freq_dbl = freq_hz;
     if (cariboulite_radio_set_frequency((cariboulite_radio_state_st*)_radio, 
-									true,
+									break_before,
 									&freq_dbl) != 0)
     {
         char msg[128] = {0};
