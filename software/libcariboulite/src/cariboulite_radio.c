@@ -177,7 +177,9 @@ int cariboulite_radio_get_rx_gain_limits(cariboulite_radio_state_st* radio,
                                     int *rx_max_gain_value_db,
                                     int *rx_gain_value_resolution_db)
 {
-	if (rx_min_gain_value_db) *rx_min_gain_value_db = 0;
+    (void)radio;
+
+    if (rx_min_gain_value_db) *rx_min_gain_value_db = 0;
     if (rx_max_gain_value_db) *rx_max_gain_value_db = 23*3;
     if (rx_gain_value_resolution_db) *rx_gain_value_resolution_db = 3;
     return 0;

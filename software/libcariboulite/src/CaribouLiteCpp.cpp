@@ -228,7 +228,7 @@ bool CaribouLite::IsInitialized()
 //==================================================================
 CaribouLiteVersion CaribouLite::GetApiVersion()
 {
-    cariboulite_lib_version_st v = {0};
+    cariboulite_lib_version_st v = {0,0,0};
     cariboulite_get_lib_version(&v);
     return CaribouLiteVersion(v.major_version, v.minor_version, v.revision);
 }

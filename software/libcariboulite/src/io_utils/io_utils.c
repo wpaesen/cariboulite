@@ -117,5 +117,9 @@ inline int io_utils_setup_interrupt(int gpio,
                                     gpioAlertFuncEx_t cb,
                                     void* context)
 {
+   (void)gpio;
+   (void)cb;
+   (void)context;
+
    return 0; //gpioSetAlertFuncEx(gpio, cb, context);
 }

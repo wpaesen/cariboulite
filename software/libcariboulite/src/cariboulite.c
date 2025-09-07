@@ -35,6 +35,9 @@ static void internal_sighandler( struct sys_st_t *sys,
                                  int signal_number,
                                  siginfo_t *si)
 {
+    (void)sys;
+    (void)context;
+
     if (ctx.sighandler) ctx.sighandler(ctx.sig_context, signal_number, si);
     
     if (ctx.signal_shown != signal_number)
@@ -154,8 +157,8 @@ bool cariboulite_frequency_available(cariboulite_channel_en ch, float freq_hz)
 {
     if (ch == cariboulite_channel_s1g)
     {
-        return (freq_hz >= CARIBOULITE_S1G_MIN1 && freq_hz <= CARIBOULITE_S1G_MAX1 ||
-                freq_hz >= CARIBOULITE_S1G_MIN2 && freq_hz <= CARIBOULITE_S1G_MAX2);
+        return ((freq_hz >= CARIBOULITE_S1G_MIN1 && freq_hz <= CARIBOULITE_S1G_MAX1) ||
+                (freq_hz >= CARIBOULITE_S1G_MIN2 && freq_hz <= CARIBOULITE_S1G_MAX2));
     }
     else if (ch == cariboulite_channel_hif)
     {

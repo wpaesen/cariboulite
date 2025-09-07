@@ -56,7 +56,7 @@ static void caribou_smi_print_smi_settings(caribou_smi_st* dev, struct smi_setti
     printf("    dma enable: %c, passthru enable: %c\n", settings->dma_enable ? 'Y':'N', settings->dma_passthrough_enable ? 'Y':'N');
     printf("    dma threshold read: %d, write: %d\n", settings->dma_read_thresh, settings->dma_write_thresh);
     printf("    dma panic threshold read: %d, write: %d\n", settings->dma_panic_read_thresh, settings->dma_panic_write_thresh);
-    printf("    native kernel chunk size: %d bytes\n", dev->native_batch_len);
+    printf("    native kernel chunk size: %zu bytes\n", dev->native_batch_len);
 }
 
 //=========================================================================

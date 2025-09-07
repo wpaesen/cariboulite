@@ -122,6 +122,8 @@ void cariboulite_sigaction_basehandler (int signo,
                                         siginfo_t *si,
                                         void *ucontext)
 {
+    (void)ucontext;
+
     int run_first = 0;
     int run_last = 0;
 
