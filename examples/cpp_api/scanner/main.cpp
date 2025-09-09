@@ -466,22 +466,20 @@ private:
 // Main entry
 int main()
 {
-    // auto samples = std::make_unique<std::array<std::complex<short>, 128 * 1024>>();
-
     // try detecting the board before getting the instance
     detectBoard();
 
     // get driver instance - use "CaribouLite&" rather than "CaribouLite" (ref)
     // get a "synchronous" api instance
-    CaribouLite& cl = CaribouLite::GetInstance(false);
+    auto& cl = CaribouLite::GetInstance(false);
 
     // print the info after connecting
     printInfo(cl);
 
     // get the radios
-    std::array<RadioHelper, 1> radios;
-    // radios[0] = RadioHelper(cl.GetRadioChannel(CaribouLiteRadio::RadioType::S1G));
-    radios[0] = RadioHelper(cl.GetRadioChannel(CaribouLiteRadio::RadioType::HiF));
+    std::vector<RadioHelper> radios;
+    // radios.emplace_back(RadioHelper(cl.GetRadioChannel(CaribouLiteRadio::RadioType::S1G)));
+    radios.emplace_back(RadioHelper(cl.GetRadioChannel(CaribouLiteRadio::RadioType::HiF)));
 
     for (auto& r : radios) {
         std::cout << "Radio :" << r.radio->GetRadioName() << "  MtuSize : " << std::dec << r.radio->GetNativeMtuSample() << " Samples" << std::endl;
@@ -560,19 +558,6 @@ int main()
             std::this_thread::sleep_for(std::chrono::milliseconds(250));
         }
     }
-
-    /*try
-    {
-        s1g->SetFrequency(900100000);
-    }
-    catch (...)
-    {
-        std::cout << "The specified freq couldn't be used" << std::endl;
-    }
-    s1g->SetRxGain(69);
-    s1g->SetRxBandwidth(2500e3);
-    s1g->SetAgc(false);
-    s1g->StartReceiving(receivedSamples);*/
 
     return 0;
 }
